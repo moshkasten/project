@@ -1,4 +1,4 @@
-(async function () {
+/*(async function () {
     "use strict";
 
 
@@ -40,8 +40,9 @@ function load(v) {
 
             const f = document.createElement("video");
             f.src = v.name;
-            par.appendChild(f); 
             f.controls = true;
+            par.appendChild(f); 
+           
 
             f.addEventListener('click', () => f.play());
        
@@ -54,19 +55,23 @@ function load(v) {
 
 
 
-}());
-/*(async function () {
+}());*/
+(async function () {
     "use strict";
 
     const r = await fetch("hw.json");
     const data = await r.json();
+    
     const par = document.querySelector("#vid");
     const loadButton = document.querySelector("#button");
     const v1 = document.querySelector('#v');
     
     document.querySelector("#hide").addEventListener("click", () => par.style.display = "none");
-
+    loadButton.addEventListener('click',()=>loadv())
     // Populate the dropdown
+    function loadv(){
+        data.videos.forEach(v=>load(v.name))
+    }
     data.videos.forEach(function (video) {
         const op = document.createElement("option");
         op.value = video.name; // Assuming video.name holds the correct source
@@ -78,7 +83,7 @@ function load(v) {
 
     function load(videoSource) {
         par.style.display = "inline-block";
-        par.innerHTML = ''; // Clear previous video
+       // par.innerHTML = ''; // Clear previous video
 
         const f = document.createElement("video");
         f.src = videoSource; // Set the video source
@@ -87,4 +92,4 @@ function load(v) {
         f.addEventListener('click', () => f.play());
     }
 
-}());*/
+}());
