@@ -65,12 +65,22 @@ function load(v) {
     const par = document.querySelector("#vid");
     const loadButton = document.querySelector("#button");
     const v1 = document.querySelector('#v');
+    let loaded =true;
+    document.querySelector("#hide").addEventListener("click", () => {par.innerHTML = "";
+        loaded=true;
+    });
+    loadButton.addEventListener('click',()=>{
     
-    document.querySelector("#hide").addEventListener("click", () => par.style.display = "none");
-    loadButton.addEventListener('click',()=>loadv())
+    loadv();}
+)
     // Populate the dropdown
+    
     function loadv(){
+        if (loaded){
+            par.innerHTML="";
         data.videos.forEach(v=>load(v.name))
+    }
+    loaded=false;
     }
     data.videos.forEach(function (video) {
         const op = document.createElement("option");
@@ -79,17 +89,23 @@ function load(v) {
         v1.appendChild(op);
     });
 
-    v1.addEventListener('change', () => load(v1.value)); // Use 'change' event
+    v1.addEventListener('change', () => load(v1.value,r)); // Use 'change' event
 
-    function load(videoSource) {
+    function load(videoSource,r) {
+        
         par.style.display = "inline-block";
-       // par.innerHTML = ''; // Clear previous video
+        if(r){
+           
+        par.innerHTML ='' }; // Clear previous video
 
         const f = document.createElement("video");
         f.src = videoSource; // Set the video source
         f.controls = true; // Optional: add controls
         par.appendChild(f);
         f.addEventListener('click', () => f.play());
+        if(r){
+            document.querySelector("video").style.width="100%";
+        }
     }
 
 }());
