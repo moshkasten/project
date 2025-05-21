@@ -39,7 +39,7 @@
       e.preventDefault();
   
       try {
-        const r = await fetch(`http://api.geonames.org/wikipediaSearch?q=${searchInput.value}&maxRows=10&username=${geoNamesApiKey}&type=json`);
+        const r = await fetch(`https://api.geonames.org/wikipediaSearch?q=${searchInput.value}&maxRows=10&username=${geoNamesApiKey}&type=json`);
         if (!r.ok) {
           throw new Error(`${r.status} - ${r.statusText}`);
         }
