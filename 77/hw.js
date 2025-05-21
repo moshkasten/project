@@ -47,7 +47,10 @@
         par.appendChild(f);
         f.addEventListener('click', () => f.play());
         if(r){
-            document.querySelector("video").style.width="100%";
+            const css=document.querySelector("video");
+            css.style.width="100%";
+            css.style.height="100%";
+            css.style.overflow="none";
         }
     }
 
