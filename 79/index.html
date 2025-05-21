@@ -98,6 +98,7 @@
 
 <body>
     <div id="map"></div>
+    
     <script>
         ((g) => {
           var h,
@@ -136,5 +137,13 @@
         })({ key: '', v: 'weekly' });
       </script>
     <script src="hw.js"></script>
+    <script>
+      function handleData(data) {
+        addPlaceToSidebar(data); // Use the API data here
+      }
+    </script>
+    
+    <script src="http://api.geonames.org/wikipediaSearch?q=wailingwall&maxRows=10&username=slubowsky&type=json&callback=handleData"></script>
+    
 </body>
 </html>
